@@ -1,7 +1,8 @@
 const fs = require('fs');
-const { nanoid } = require('nanoid')
+const { nanoid } = require('nanoid');
+const path = require('path');
 
-const tasksFile = './src/task.json';
+const tasksFile = path.join(__dirname, 'task.json');
 let tasks = [];
 
 // IIFE load function
