@@ -46,5 +46,3 @@ Use ```--help``` command to take a look all command guide:
 ```bash
 task-cli --help
 ```
-
-https://roadmap.sh/projects/task-tracker
