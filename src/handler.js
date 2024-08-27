@@ -4,7 +4,8 @@ const { nanoid } = require('nanoid')
 const tasksFile = './src/task.json';
 let tasks = [];
 
-function loadTask() {
+// IIFE load function
+(function(){
     if (fs.existsSync(tasksFile)) {
         tasks = JSON.parse(fs.readFileSync(tasksFile))
         return;
@@ -13,14 +14,14 @@ function loadTask() {
     console.log('Saving file does not exist, creating one...');
     saveTask();
     console.log('Success creating saving file');
-}
+})();
 
 function saveTask() {
     fs.writeFileSync(tasksFile, JSON.stringify(tasks, null, 2));
 }
 
 function addTask(description) {
-    loadTask();
+    // loadTask();
 
     const newTask = {
         id: nanoid(16),
@@ -38,7 +39,7 @@ function addTask(description) {
 
 function updateTaskDescription(id, description) {
 
-    loadTask();
+    // loadTask();
 
     const index = tasks.findIndex((task) => task.id === id);
 
@@ -59,7 +60,7 @@ function updateTaskDescription(id, description) {
 }
 
 function deleteTask(id) {
-    loadTask();
+    // loadTask();
 
     const index = tasks.findIndex((task)=> task.id === id);
 
@@ -75,7 +76,7 @@ function deleteTask(id) {
 }
 
 function listAllTask() {
-    loadTask();
+    // loadTask();
     
     if (tasks.length === 0) {
         console.log('No tasks found.');
@@ -88,7 +89,7 @@ function listAllTask() {
 }
 
 function listFilterTask(status) {
-    loadTask();
+    // loadTask();
     let filteredTask = tasks;
     
     filteredTask = filteredTask.filter((task) => task.status === status);
@@ -103,7 +104,7 @@ function listFilterTask(status) {
 }
 
 function changeTaskStatus(id, newStatus) {
-    loadTask();
+    // loadTask();
     
     const index = tasks.findIndex((task) => task.id === id);
     
@@ -135,7 +136,6 @@ function changeTaskStatus(id, newStatus) {
     }
 
 module.exports = {
-    loadTask,
     saveTask,
     addTask,
     updateTaskDescription,
