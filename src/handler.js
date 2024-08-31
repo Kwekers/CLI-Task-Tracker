@@ -22,8 +22,6 @@ function saveTask() {
 }
 
 function addTask(description) {
-    // loadTask();
-
     const newTask = {
         id: nanoid(16),
         description,
@@ -39,8 +37,6 @@ function addTask(description) {
 }
 
 function updateTaskDescription(id, description) {
-
-    // loadTask();
 
     const index = tasks.findIndex((task) => task.id === id);
 
@@ -61,8 +57,6 @@ function updateTaskDescription(id, description) {
 }
 
 function deleteTask(id) {
-    // loadTask();
-
     const index = tasks.findIndex((task)=> task.id === id);
 
     if (index === -1) {
@@ -76,9 +70,7 @@ function deleteTask(id) {
     console.log(`Success Removing Task with ID: ${id}`);
 }
 
-function listAllTask() {
-    // loadTask();
-    
+function listAllTask() {    
     if (tasks.length === 0) {
         console.log('No tasks found.');
     } else {
@@ -89,9 +81,7 @@ function listAllTask() {
     
 }
 
-function listFilterTask(status) {
-    // loadTask();
-    let filteredTask = tasks;
+function listFilterTask(status) {    let filteredTask = tasks;
     
     filteredTask = filteredTask.filter((task) => task.status === status);
     
@@ -104,9 +94,7 @@ function listFilterTask(status) {
     }
 }
 
-function changeTaskStatus(id, newStatus) {
-    // loadTask();
-    
+function changeTaskStatus(id, newStatus) {    
     const index = tasks.findIndex((task) => task.id === id);
     
     if(index === -1) {
